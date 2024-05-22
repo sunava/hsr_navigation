@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-	<node name="map_server" pkg="map_server" type="map_server" args="$(find hsr_navigation)/map/suturo_kitchen/final_projectroom_map.yaml" />
+        <arg name="map_name" default="suturo_kitchen/final_projectroom_map.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find hsr_navigation)/map/$(arg map_name)" />
+	
         <node name="tf_buffer" pkg="tf2_ros" type="buffer_server" /> 
 
 	<node pkg="amcl" type="amcl" name="amcl">
